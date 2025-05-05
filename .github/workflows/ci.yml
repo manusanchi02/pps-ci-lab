@@ -1,0 +1,19 @@
+name: Check gradle build
+on:
+    push:
+    pull_request:
+      branches:
+        - main
+        - develop
+jobs:
+    Build:
+      runs-on: ubuntu-latest
+      steps:
+          - name: Checkout
+            uses: actions/checkout@v2
+          - name: Set up JDK 21
+            uses: joschi/setup-jdk@v2.3.0
+            with:
+              java-version: 21
+          - name: Build
+            run: ./gradlew check
