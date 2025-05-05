@@ -1,19 +1,19 @@
 name: Check gradle build
 on:
-    push: # On every push on any branch
+    push:
     pull_request:
-      branches: # Branches to monitor for pull requests
-        - main 
+      branches:
+        - main
         - develop
 jobs:
-    Build: # Job name
-      runs-on: ubuntu-latest # Operating system selection
+    Build:
+      runs-on: ubuntu-latest
       steps:
-        - name: Checkout # custom name Checkout the repository
-          uses: actions/checkout@v2 # Action implemented in this repository, tag "2"
-        - name: Set up JDK 21 # custom name Set up JDK 21
-          uses: joschi/setup-jdk@v2.3.0 # Action implemented in repository "joschi/setup-jdk" tag "2.3.0"
-          with: # Actions parameters (action name omitted)
+          - name: Checkout
+            uses: actions/checkout@v2
+          - name: Set up JDK 21
+            uses: joschi/setup-jdk@v2.3.0
+            with:
               java-version: 21
-        - name: Build
-          run: ./gradlew check
+          - name: Build
+            run: ./gradlew check
